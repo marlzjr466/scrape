@@ -51,8 +51,12 @@ getEmails()
 // })
 // console.log('Done')
 
-
-
+// remove repeated object value in array
+//let objectArray = [
+//    {id:1, name: 'Biboy'}, {id: 2, name: 'John'}, {id: 3, name: 'Mario'}, {id:1, name: 'Biboy'}, {id: 3, name: 'Mario'},
+//    {id:1, name: 'Biboy'}, {id: 3, name: 'Mario'}, {id: 2, name: 'John'}, {id:1, name: 'Biboy'}, {id: 2, name: 'John'}
+//]
+//let uniqueObjectArray = [...new Set(objectArray.map(item => { return objectArray.filter(e => e.id == item.id)[0] }))]
 
 // var mysql      = require('mysql');
 // var connection = mysql.createConnection({
