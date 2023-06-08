@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const axios = require("axios")
+const nodemailer = require('nodemailer')
 
 const url = "https://virtualbiznest.com/"
 // const AT = "EACDMUs5lDZB0BAO8xEwnhsWdaXYj7mTDPlWVabZBckbUuZAdNsvyujjb5VCjMkuO0RKUyFnZBmIi9LlbSZBShm1dElf5Lcl3GEgkeRDeZBfMWItP6oyG22brEEAZCVWj5YPvYWZCpAHZAolOP5tYB7LLZCKBZAV4gbzsQaNSDxE8ru2GurNLSZBMqbeuNZAbGhBeSZAnmqBaXxpBcb6t1qfSHSk2kV5Wdr0LWLe0qvpca37fwWZATAvkCg2HuWQSeV1DELMbcEZD"
@@ -25,6 +26,43 @@ const getEmails = async () => {
 }
 
 getEmails()
+
+const sendEmail = () => {
+    let transporter = nodemailer.createTransport({
+
+        // host: "SERVER_HERE",
+        // port: 2525,
+        // secure: false, // true for 465, false for other ports
+        // auth: {
+        //     user: 'USERNAME_HERE',
+        //     pass: 'PASSWORD_HERE',
+        // }
+
+        host: "SERVER_HERE",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: 'USERNAME_HERE',
+            pass: 'PASSWORD_HERE',
+        }
+    })
+
+    let mailOptions = {
+        from: 'EMAIL_HERE',
+        to: 'EMAIL_HERE',
+        subject: 'Sending test email!',
+        text: '',
+        html: '<h1>Welcome to Connect PH,</h1><p>This is the last test email from developer!</p>'
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+    })
+}
 
 // const url = require('url')
 // const adr = 'https://samplesite.com/?s=node+js+training'
